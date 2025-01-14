@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Class: RGQuaternion</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Class: RGQuaternion</h1>
+
+    
+
+
+
+
+<section>
+
+<header>
+    
+        <h2><span class="attribs"><span class="type-signature"></span></span>RGQuaternion<span class="signature">(w, i, j, k)</span><span class="type-signature"></span></h2>
+        
+            <div class="class-description">A quaternion, represented by one real part and a 3 imaginary parts. Used primarly for representing 3d rotation. Always normalized.</div>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+
+    
+    <h2>Constructor</h2>
+    
+
+    
+    <h4 class="name" id="RGQuaternion"><span class="type-signature"></span>new RGQuaternion<span class="signature">(w, i, j, k)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Creates a new quaternion using raw components, To create one using an angle and axis, use the <a href="RGQuaternion.html#fromAngleAxis">RGQuaternion#fromAngleAxis</a> method.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>w</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Real component</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>i</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The first imanginary component</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>j</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The second imanginary component</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>k</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The third imanginary component</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="util_RGQuaternion.mjs.html">util/RGQuaternion.mjs</a>, <a href="util_RGQuaternion.mjs.html#line5">line 5</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    </div>
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Classes</h3>
+
+        <dl>
+            <dt><a href="RGQuaternion.html">RGQuaternion</a></dt>
+            <dd></dd>
+        </dl>
+    
+
+    
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Members</h3>
+
+        
+            
+<h4 class="name" id="fromAngleAxis"><span class="type-signature"></span>fromAngleAxis<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    Creates a new quaternion using an angle of rotation around an 3 dimensional axis
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="util_RGQuaternion.mjs.html">util/RGQuaternion.mjs</a>, <a href="util_RGQuaternion.mjs.html#line30">line 30</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="getMultiplication"><span class="type-signature"></span>getMultiplication<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    Returns the quaternion resulting from the multiplication of quaternions: q1 * q2.
+This is the composition of the two quaternions, meaning the application of q1, and then the application of q2,
+combining their rotation to form one new quaternion
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="util_RGQuaternion.mjs.html">util/RGQuaternion.mjs</a>, <a href="util_RGQuaternion.mjs.html#line49">line 49</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="inverse"><span class="type-signature"></span>inverse<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    Returns the inverse of this quaternion, which is also the inverse of the rotation represented by this quaternion.
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="util_RGQuaternion.mjs.html">util/RGQuaternion.mjs</a>, <a href="util_RGQuaternion.mjs.html#line62">line 62</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="magnitude"><span class="type-signature"></span>magnitude<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    Returns the magnitude of this quaternion
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="util_RGQuaternion.mjs.html">util/RGQuaternion.mjs</a>, <a href="util_RGQuaternion.mjs.html#line70">line 70</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="normalize"><span class="type-signature"></span>normalize<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    Normalizes this quaternion to be a unit quaternion. Normalization is reqiured for all operations involving 
+rotation using qauternions, and for that reason, <a href="RGQuaternion.html#normalize">RGQuaternion#normalize</a> is applied on construction of all qauterions.
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="util_RGQuaternion.mjs.html">util/RGQuaternion.mjs</a>, <a href="util_RGQuaternion.mjs.html#line78">line 78</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="rotate3dPoint"><span class="type-signature"></span>rotate3dPoint<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    Rotates a 3d point with the rotation described by this quaternion, relative to (0,0,0)
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="util_RGQuaternion.mjs.html">util/RGQuaternion.mjs</a>, <a href="util_RGQuaternion.mjs.html#line91">line 91</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+    
+
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="RGColor.html">RGColor</a></li><li><a href="RGMaterial_RGMaterial.html">RGMaterial</a></li><li><a href="RGQuaternion.html">RGQuaternion</a></li><li><a href="RGTriangleRenderer.html">RGTriangleRenderer</a></li><li><a href="RGVec2.html">RGVec2</a></li><li><a href="RGVec3.html">RGVec3</a></li></ul><h3>Global</h3><ul><li><a href="global.html#orient2dPoints">orient2dPoints</a></li><li><a href="global.html#projectToCamViewport">projectToCamViewport</a></li><li><a href="global.html#viewportToContext">viewportToContext</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.4</a> on Mon Jan 13 2025 22:38:22 GMT-0700 (Mountain Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

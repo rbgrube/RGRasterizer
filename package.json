@@ -1,0 +1,30 @@
+{
+  "name": "rgrasterizer",
+  "version": "1.0.0",
+  "description": "",
+  "private": "true",
+  "scripts": {
+    "run-electron-test": "electron ./test/testApp.js",
+    "bundle-lib": "npx webpack --config ./config/webpack.config.js",
+    "build-jsdoc": "npx jsdoc -r ./src/ -d dist/jsdoc -c ./config/jsdoc.config.json",
+    "build-test-electron": "npm run bundle-lib; npm run build-jsdoc; cp dist/rgrasterizer.js test/rglib;  npm run run-electron-test;"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "electron": "^33.2.1",
+    "glob": "^11.0.0",
+    "jsdoc": "^4.0.4",
+    "node-loader": "^2.1.0",
+    "sharp": "^0.33.5",
+    "terser-webpack-plugin": "^5.3.11"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^9.2.1",
+    "babel-preset-env": "^1.7.0",
+    "minami": "^1.2.3",
+    "webpack": "^5.97.1",
+    "webpack-cli": "^6.0.1"
+  }
+}
