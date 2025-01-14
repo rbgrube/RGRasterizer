@@ -31,11 +31,11 @@ export class RGTriangleRenderer {
         let contextTriangle = new RGScreenTriangle(screenVerticies,texCoords);
         let maxRenderingBounds = contextTriangle.get2dBoundingBox();
         maxRenderingBounds.clip(0,0,rgContext.getRenderWidth(),rgContext.getRenderHeight())
-       
 
         for(let y = maxRenderingBounds.lower.y; y < maxRenderingBounds.upper.y; y++){
             for(let x = maxRenderingBounds.lower.x; x < maxRenderingBounds.upper.x; x++){
                 if (contextTriangle.contains(new RGVec2(x, y))) {   
+
 
                     let bc = contextTriangle.getBarycentric(new RGVec2(x,y)) //barycentric coords of this pixel on screenTri
     

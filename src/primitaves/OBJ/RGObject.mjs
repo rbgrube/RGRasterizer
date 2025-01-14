@@ -38,7 +38,7 @@ export class RGObject{
         let verts = [];
 
         lines.forEach(l => {
-            let params = l.split(" ");
+            let params = l.split(/\s+/g).filter(e => String(e).trim());;
             if(params[0] == "v"){
                 //vert
                 verts.push(new RGVec3(params[1], params[2], params[3]))
@@ -51,7 +51,7 @@ export class RGObject{
         let faces = [];
 
         lines.forEach(l => {
-            let params = l.split(" ");
+            let params = l.split(/\s+/g).filter(e => String(e).trim());;
             if(params[0] == "f"){
                 //face
                 let thisFace = [];
@@ -68,7 +68,7 @@ export class RGObject{
         let coords = [];
 
         lines.forEach(l => {
-            let params = l.split(" ");
+            let params = l.split(/\s+/g).filter(e => String(e).trim());;
             if(params[0] == "vt"){
                 //vert
                 coords.push(new RGVec2(params[1], params[2], params[3]))
@@ -117,6 +117,7 @@ export class RGObject{
 
             let useMat;
             materials.forEach(m => {
+
                 if(m.name == this.matName){
                     useMat = m;
                 }

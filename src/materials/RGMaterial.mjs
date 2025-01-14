@@ -17,6 +17,9 @@ export class RGMaterial{
 
         this.name = name;
 
+        this.texLoaded = 0;
+        this.texToLoad = 0;
+
         this.Ka = values.Ka || new RGColor() // ambient color
         this.Kd = values.Kd || new RGColor() // diffuse color
         this.Ks = values.Ks || new RGColor() // specular color
@@ -48,6 +51,11 @@ export class RGMaterial{
         10. Casts shadows onto invisible surfaces
         */
 
+    }
+    checkLoaded = (loadCallBack) => {
+        if(this.texLoaded == this.texToLoad){
+            loadCallBack();
+        }
     }
 
     /**

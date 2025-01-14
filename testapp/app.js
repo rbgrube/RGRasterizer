@@ -1,30 +1,45 @@
-const canvas = document.getElementById("canvas");
+const canvas = document.getElementById('render');
 const ctx = canvas.getContext('2d');
 
-const WIDTH = canvas.width = window.innerWidth;
-const HEIGHT = canvas.height = window.innerHeight;
+const width = canvas.width = window.innerWidth;
+const height = canvas.height = window.innerHeight;
 
 const myContext = RG.Context.createFromCanvas2d(ctx,1)
-const myCamera = new RG.Camera(new RG.Vec3(0,0,-15));
+let rot=0;
+
+const myCamera = new RG.Camera(
+    // A 3d dimensional vector representing the position of our camera in world space
+    new RG.Vec3(0,0,-15)
+);
+
 const mySceneRenderer = new RG.SceneRenderer(myContext,myCamera)
 const myScene = new RG.Scene();
 
-rot = 0;
+let testObject;
 
-pikaMat = new RG.MaterialLoader('rsc/capsule/capsule.mtl','rsc/capsule/',()=>{
-    myScene.useMTLs(pikaMat.getMaterials())
+let loader = new RG.ObjLoader("./rsc/capsule/capsule.obj", () => {
+    // After the cat file has loaded, lets add the objects
+    // contained in it into our scene. 
+
+    // Lets also scale and rotate a bit.
+
+    testObject = loader.getObjects()[0]
+    testObject.scaleTo(4);
+    myScene.add(testObject)
+
 })
 
-file = new RG.ObjLoader('rsc/capsule/capsule.obj', () => {
-    file.getObjects().forEach(o=>{
-        o.setPos(new RG.Vec3(0,0,0))
-        o.scaleTo(4)
-        myScene.add(o)
-    })
 
+// Passing a .mtl file, and a directory for the loader to search for texture files
+let mtlLoader = new RG.MaterialLoader('./rsc/capsule/capsule.mtl', './rsc/capsule/', ()=>{
+    // Lets give the scene the loaded materials
+    myScene.useMTLs(mtlLoader.getMaterials());
+
+    // And finally, lets render our scene:
     requestAnimationFrame(loop)
-
 })
+
+
 
 keys={
     KeyW:false,
@@ -54,7 +69,7 @@ document.addEventListener('keyup',(e)=>{
 function loop(){
 
     rot += Math.PI/180 * 2;
-    file.getObjects().forEach(o=>{o.rotateAround(new RG.Vec3(0,0,0),rot,new RG.Vec3(0,1,0))})
+    testObject.rotateAround(new RG.Vec3(0,0,0),rot,new RG.Vec3(0,1,0))
 
     if(keys.KeyA){myCamera.moveRelative(new RG.Vec3(-0.3,0,0))}
     if(keys.KeyD){myCamera.moveRelative(new RG.Vec3(0.3,0,0))}

@@ -76,9 +76,9 @@ export class RGTriangleObject{
     }
 
     render = function(cam,rctx,useMat){
-
         //TODO back face culling
         let clippingPlanes = cam.getClippingPlanes();
+
 
         this.clip([
             clippingPlanes.near,

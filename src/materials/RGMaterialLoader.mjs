@@ -15,6 +15,7 @@ export class RGMaterialLoader {
         this.readLine = 0;
         this.lines = [];
 
+        this.matLoaded = 0;
         this.materials = [];
 
         (async () => {
@@ -23,7 +24,6 @@ export class RGMaterialLoader {
                 .then(data => {
                     this.lines = data.split(/\r?\n/);
                     this.splitLines();
-                    this.onload();
                 })
         })()
 
@@ -73,7 +73,7 @@ export class RGMaterialLoader {
         let mat = new RGMaterial();
 
         lines.forEach(l => {
-            let params = l.split(" ");
+            let params = l.split(/\s+/g).filter(e => String(e).trim());
         
             switch (params[0]) {
                 case 'newmtl':
@@ -87,7 +87,13 @@ export class RGMaterialLoader {
                 case 'map_Ka':
                 case 'map_Kd':
                 case 'map_Ks':
-                    RGTextureImage.fromURL(this.fileSearchDirectory + params[1]).then(tex => {mat[params[0]] = tex});
+                    mat.texToLoad ++;
+                    RGTextureImage.fromURL(this.fileSearchDirectory + params[1]).then(tex => {mat[params[0]] = tex; mat.texLoaded ++; mat.checkLoaded((()=>{
+                        this.matLoaded ++; 
+                        if(this.matLoaded == this.materials.length){
+                            this.onload()
+                        }
+                    }));});
                     break;
                 case 'Ns':
                 case 'd':
