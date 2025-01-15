@@ -1,4 +1,5 @@
 const path = require('path');
+const TerserPlugin = require('terser-webpack-plugin')
 
 module.exports =  {
   //mode: "development",
@@ -13,5 +14,18 @@ module.exports =  {
     }
   },
 
+  optimization: {
+    minimize: false, // Enable minimization
+    minimizer: [
+      new TerserPlugin({
+        terserOptions: {
+          format: {
+            comments: /@/, // Retain comments containing '@' (used in JSDoc)
+          },
+        },
+        extractComments: false, // Ensure comments stay in the bundle
+      }),
+    ],
+  },
   
 };
